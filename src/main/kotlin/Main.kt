@@ -1,6 +1,7 @@
 import org.example.*
+
 /**
- * Aquest mètode s'encarrega de calcular el cost de la factura de l’aigua en funció dels litres consumits i altres elements.
+ * Este método se encarga de calcular el coste de la factura de l'aigua en función de los litros consumidos y otros elementos.
  * @author AlanTeixido
  */
 fun main() {
@@ -31,6 +32,15 @@ fun main() {
     }
 }
 
+/**
+ * Calcula el coste de la factura de l'aigua según los parámetros dados.
+ * @param litresConsumits Litros de agua consumidos.
+ * @param esFamiliaNombrosa Indica si es familia numerosa.
+ * @param esFamiliaMono Indica si es familia monomarental.
+ * @param teBoSocial Indica si tiene bo social.
+ * @param preuXLitre Precio por litro.
+ * @param membresFamilia Número de miembros en la familia monomarental.
+ */
 fun calcularCostAigua(litresConsumits: Int, esFamiliaNombrosa: Boolean, esFamiliaMono: Boolean, teBoSocial: Boolean, preuXLitre: Double, membresFamilia: Int) {
     var quotaFixa = 6.0
     var quotaVariable: Double = when {
@@ -58,27 +68,25 @@ fun calcularCostAigua(litresConsumits: Int, esFamiliaNombrosa: Boolean, esFamili
     mostrarDesglossament(costTotal, quotaFixa, litresConsumits, quotaVariable)
 }
 
-
 /**
- * Demana la introduccio de diners del client
- * @return litresConsumits amb numero enter
+ * Pide la introducción de los litros consumidos por el cliente.
+ * @return Litros consumidos como número entero.
  */
 fun introduirLitres(): Int {
     return readInt("$BLUE Introdueix els litres gastats: $RESET", "Introdueix un número!", "Valor fora del rang esperat!", 1, 1000)
 }
 
 /**
- * Mostra el desglossament de la factura amb colors.
- * @param costTotal Import total de la factura d'aigua.
- * @param quotaFixa Quota fixa mensual.
- * @param litresConsumits Quantitat de litres d'aigua consumits.
- * @param quotaVariable Quota variable en funció del consum.
+ * Muestra el desglose de la factura con colores.
+ * @param costTotal Importe total de la factura de agua.
+ * @param quotaFixa Cuota fija mensual.
+ * @param litresConsumits Cantidad de litros de agua consumidos.
+ * @param quotaVariable Cuota variable en función del consumo.
  */
 fun mostrarDesglossament(costTotal: Double, quotaFixa: Double, litresConsumits: Int, quotaVariable: Double) {
     println("${WHITE_BACKGROUND_BRIGHT}${BLACK_BOLD}Desglossament de la factura d'aigua:${RESET}")
     println("${GREEN}Quota Fixa: ${RESET}$quotaFixa €")
     println("${GREEN}Consum (${litresConsumits} litres): ${RESET}$quotaVariable €")
     println("${YELLOW}------------------------------------------------------------- $RESET")
-    println("${RED}Import Total: ${RESET}$costTotal€")
+    println("${RED}Import Total: ${RESET}$costTotal €")
 }
-
