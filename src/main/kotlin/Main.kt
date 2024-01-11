@@ -28,7 +28,11 @@ fun main() {
 
         val teBoSocial = readBoolean("$BLUE Tens bo social? (true/false): $RESET", "Format incorrecte.")
 
-        calcularCostAigua(litresConsumits, esFamiliaNombrosa, esFamiliaMono, teBoSocial, preuXLitre, membresFamilia)
+        // Almacena el resultado en una variable
+        val coste = calcularCostAigua(litresConsumits, esFamiliaNombrosa, esFamiliaMono, teBoSocial, preuXLitre, membresFamilia)
+
+        // Imprime el resultado
+        println("${WHITE_BACKGROUND_BRIGHT}${BLACK_BOLD}Import Total: ${RESET}$coste €")
     }
 }
 
@@ -40,8 +44,9 @@ fun main() {
  * @param teBoSocial Indica si tiene bo social.
  * @param preuXLitre Precio por litro.
  * @param membresFamilia Número de miembros en la familia monomarental.
+ * @return Coste total de la factura.
  */
-fun calcularCostAigua(litresConsumits: Int, esFamiliaNombrosa: Boolean, esFamiliaMono: Boolean, teBoSocial: Boolean, preuXLitre: Double, membresFamilia: Int) {
+fun calcularCostAigua(litresConsumits: Int, esFamiliaNombrosa: Boolean, esFamiliaMono: Boolean, teBoSocial: Boolean, preuXLitre: Double, membresFamilia: Int): Double {
     var quotaFixa = 6.0
     var quotaVariable: Double = when {
         litresConsumits < 50 -> 0.0
@@ -66,6 +71,9 @@ fun calcularCostAigua(litresConsumits: Int, esFamiliaNombrosa: Boolean, esFamili
 
     val costTotal = quotaFixa + quotaVariable
     mostrarDesglossament(costTotal, quotaFixa, litresConsumits, quotaVariable)
+
+    // Devuelve el coste total
+    return costTotal
 }
 
 /**
@@ -75,6 +83,7 @@ fun calcularCostAigua(litresConsumits: Int, esFamiliaNombrosa: Boolean, esFamili
 fun introduirLitres(): Int {
     return readInt("$BLUE Introdueix els litres gastats: $RESET", "Introdueix un número!", "Valor fora del rang esperat!", 1, 1000)
 }
+
 
 /**
  * Muestra el desglose de la factura con colores.
