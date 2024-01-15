@@ -31,8 +31,6 @@ fun main() {
         // Emmagatzema el resultat en una variable
         val coste = calcularCostAigua(litresConsumits, esFamiliaNombrosa, esFamiliaMono, teBoSocial, preuXLitre, membresFamilia)
 
-        // Imprimeix el resultat
-        println("${WHITE_BACKGROUND_BRIGHT}${BLACK_BOLD}Import Total: ${RESET}$coste €")
     }
 }
 
